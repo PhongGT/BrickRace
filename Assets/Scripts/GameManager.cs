@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         int count = color.Total();
         int random = Random.Range(0, count+1);
-        Debug.Log(color.Debug());
+        //Debug.Log(random);
         if (random >= 0 && random < color.numbRed && color.numbRed != 0)
         {
             color.Lost(0);
@@ -46,11 +46,12 @@ public class GameManager : MonoBehaviour
             color.Lost(2);
             return 2;
         }
-        else
+        else 
         {
             color.Lost(3);
             return 3;
         }
+        
             
      
     }
