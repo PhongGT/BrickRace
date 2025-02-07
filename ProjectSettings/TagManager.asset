@@ -10,6 +10,7 @@ TagManager:
   - Red
   - Yellow
   - Green
+  - Bridge
   layers:
   - Default
   - TransparentFX

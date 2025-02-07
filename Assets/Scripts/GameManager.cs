@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
    [SerializeField] protected Color color;
 
     public static GameManager Instance;
+
+    public int[] characterBrickCount; 
     void Start()
     {
         color = new Color();
-        
+        characterBrickCount = new int[3];
+        // 0: Red, 1: Green, 2: Blue, 3:Yellow
     }
     private void Awake()
     {
@@ -21,10 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public int RandomColor()
     {
         int count = color.Total();
