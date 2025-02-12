@@ -11,6 +11,12 @@ public class MapRenderer : MonoBehaviour
     [SerializeField] GameObject brickGPrefab;
     [SerializeField] GameObject brickBPrefab;
     [SerializeField] GameObject brickYPrefab;
+
+    public List<GameObject> y = new List<GameObject>();
+
+    public List<GameObject> r = new List<GameObject>();
+    public List<GameObject> b = new List<GameObject>();
+    public List<GameObject> g = new List<GameObject>();
     private void Start()
     {
         if(instance == null)
@@ -24,22 +30,28 @@ public class MapRenderer : MonoBehaviour
 
     private void RendererMap(int type, int x, int z)
     {
+        GameObject gameObject;
         if (type == 0)
         {
-            Instantiate(brickRPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            gameObject = Instantiate(brickRPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            r.Add(gameObject);
         }
         else if (type == 1)
         {
-            Instantiate(brickGPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            gameObject = Instantiate(brickGPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            g.Add(gameObject);
         }
         else if (type == 2)
         {
-            Instantiate(brickBPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            gameObject = Instantiate(brickBPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            b.Add(gameObject);
         }
         else if (type == 3)
         {
-            Instantiate(brickYPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            gameObject = Instantiate(brickYPrefab, new Vector3(x, 0, z), this.transform.rotation, this.transform);
+            y.Add(gameObject);
         }
+
     }
     public void GenMap()
     {

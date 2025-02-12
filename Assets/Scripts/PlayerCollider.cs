@@ -10,6 +10,7 @@ public class PlayerCollider : MonoBehaviour
     public Stack<GameObject> bricks = new Stack<GameObject>();
     public PickColor color;
     protected PlayerMovement playerMovement;
+    
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -21,7 +22,7 @@ public class PlayerCollider : MonoBehaviour
     {
         if (other.CompareTag(color.color.ToString()))
         {
-            
+            GameManager.Instance.score += 1;
             other.transform.SetParent(brickParent.transform);
             other.transform.localPosition = new Vector3(0,count*0.1f,0);
             other.transform.localRotation = Quaternion.Euler(0,0,0);
@@ -40,17 +41,6 @@ public class PlayerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bridge") )
             {
-            //Ray ray = new Ray(transform.position + new Vector3(0,0,5), this.transform.forward);
-            //if (Physics.Raycast(ray, out RaycastHit hitInfo, 20f, 1))
-
-            //{
-
-            //    Debug.Log(hitInfo.collider);
-            //    Debug.DrawRay(transform.position, transform.forward * 20f, Color.red);
-            //}
-            //else
-            //    Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);
-
             if (bricks.Count != 0)
             {
                 playerMovement.isLimited = false;
@@ -76,3 +66,13 @@ public class PlayerCollider : MonoBehaviour
    
 
 }
+            //Ray ray = new Ray(transform.position + new Vector3(0,0,5), this.transform.forward);
+            //if (Physics.Raycast(ray, out RaycastHit hitInfo, 20f, 1))
+
+            //{
+
+            //    Debug.Log(hitInfo.collider);
+            //    Debug.DrawRay(transform.position, transform.forward * 20f, Color.red);
+            //}
+            //else
+            //    Debug.DrawRay(transform.position, transform.forward * 20f, Color.green);

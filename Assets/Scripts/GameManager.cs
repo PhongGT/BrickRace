@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -11,11 +12,15 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance;
 
-    public int[] characterBrickCount; 
+    public int[] characterBrickCount;
+
+    public int score = 0;
     void Start()
     {
         color = new Color();
         characterBrickCount = new int[3];
+        if(PlayerPrefs.HasKey("score"))
+        score = PlayerPrefs.GetInt("score");
         // 0: Red, 1: Green, 2: Blue, 3:Yellow
     }
     private void Awake()
@@ -54,6 +59,12 @@ public class GameManager : MonoBehaviour
         
             
      
+    }
+    private void OnApplicationQuit()
+    {
+
+        PlayerPrefs.SetInt("score", score);
+        
     }
 
     [System.Serializable] protected class Color
@@ -114,6 +125,7 @@ public class GameManager : MonoBehaviour
             string a = "R" + ": " + numbRed.ToString() + ": " + numbGreen.ToString() + ": " + numbBlue.ToString() + ": " + numbYellow.ToString() + "\n";
             return a;
         }
+   
     }
 }    
 
